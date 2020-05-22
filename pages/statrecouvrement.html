@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="bootstrap.min.css" />        
+        <script src="jquery-3.5.1.min.js"></script>
+        <script src="bootstrap.min.js"></script>
+      
+      <script>
+          $(function () {
+
+            NbreTotalPlantation();
+            NbreTotalPlantationAvecMinimum1Paiement();
+            NbreTotalPlantationAvecEtatAZero();
+            NbreTotalPlantationAvecEtatAUn();
+            NbreTotalPlantationAvecEtatADeux();
+            MontantTotalPrevisionnelAttendu();
+            MontantTotalSouscriptionPercu();
+            MontantTotalPourPlantationEtat0();
+            MontantTotalPourPlantationEtat1();
+            MontantTotalPourPlantationEtat2();
+
+            setTimeout(() => {  
+              
+                var TotalPrevisionnel = document.getElementById('sptotal_previsionnel').innerHTML;
+                var TotalPercu = document.getElementById('sptotal_montant_percu').innerHTML;
+                var percentage = (TotalPercu * 100) / TotalPrevisionnel;
+                
+                $('#spporcentage_recouvrement').html(percentage + " %");
+                 
+            }, 8000);
+
+
+          });
+
+
+          function NbreTotalPlantation() {
+            $.ajax({
+				type: "GET",
+				url: 'http://localhost:3000/api/getTotalPlantation',
+				contentType: "application/json; charset=utf-8",
+				datatype: "json",
+				success: function (data) {
+					$('#sptotal_plantation').html(data[0].Total_Plantation);
+				},
+				error: function () {
+					alert("Dynamic content load failed.");
+				}
+			});
+          }
+
+          function NbreTotalPlantationAvecMinimum1Paiement() {
+            $.ajax({
+				type: "GET",
+				url: 'http://localhost:3000/api/getTotalPlantationAvec1Paiement',
+				contentType: "application/json; charset=utf-8",
+				datatype: "json",
+				success: function (data) {
+					$('#sptotal_souscription').html(data[0].Total_Plantation_Minimum_1_Paiement);
+				},
+				error: function () {
+					alert("Dynamic content load failed.");
+				}
+			});
+          }
+
+          function NbreTotalPlantationAvecEtatAZero() {
+            $.ajax({
+				type: "GET",
+				url: 'http://localhost:3000/api/getTotalPlantationEtatEgaleAZero',
+				contentType: "application/json; charset=utf-8",
+				datatype: "json",
+				success: function (data) {
+					$('#sptotal_etat0').html(data[0].TotalPlantationEtatEgaleA0);
+				},
+				error: function () {
+					alert("Dynamic content load failed.");
+				}
+			});
+          }
+
+          function NbreTotalPlantationAvecEtatAUn() {
+            $.ajax({
+				type: "GET",
+				url: 'http://localhost:3000/api/getTotalPlantationEtatEgaleAUn',
+				contentType: "application/json; charset=utf-8",
+				datatype: "json",
+				success: function (data) {
+					$('#sptotal_etat1').html(data[0].TotalPlantationEtatEgaleA1);
+				},
+				error: function () {
+					alert("Dynamic content load failed.");
+				}
+			});
+          }
+
+          function NbreTotalPlantationAvecEtatADeux() {
+            $.ajax({
+				type: "GET",
+				url: 'http://localhost:3000/api/getTotalPlantationEtatEgaleADeux',
+				contentType: "application/json; charset=utf-8",
+				datatype: "json",
+				success: function (data) {
+					$('#sptotal_etat2').html(data[0].TotalPlantationEtatEgaleA2);
+				},
+				error: function () {
+					alert("Dynamic content load failed.");
+				}
+			});
+          }
+
+          function MontantTotalPrevisionnelAttendu() {
+            $.ajax({
+				type: "GET",
+				url: 'http://localhost:3000/api/getTotalMontantPrevisionnel',
+				contentType: "application/json; charset=utf-8",
+				datatype: "json",
+				success: function (data) {
+					$('#sptotal_previsionnel').html(data[0].Total_Montant_Previsionnel);
+				},
+				error: function () {
+					alert("Dynamic content load failed.");
+				}
+			});
+          }
+
+          
+          function MontantTotalSouscriptionPercu() {
+            $.ajax({
+				type: "GET",
+				url: 'http://localhost:3000/api/getTotalMontantPercu',
+				contentType: "application/json; charset=utf-8",
+				datatype: "json",
+				success: function (data) {
+					$('#sptotal_montant_percu').html(data[0].Total_Montant_Percu);
+				},
+				error: function () {
+					alert("Dynamic content load failed.");
+				}
+			});
+          }
+          
+
+          function MontantTotalPourPlantationEtat0() {
+            $.ajax({
+				type: "GET",
+				url: 'http://localhost:3000/api/getTotalMontantPercuAvecPlantationEtatEgaleAZero',
+				contentType: "application/json; charset=utf-8",
+				datatype: "json",
+				success: function (data) {
+					$('#sptotal_montant_percu_etat0').html(data[0].Total_Montant_Percu_Avec_Plantation_EtatEgaleA0);
+				},
+				error: function () {
+					alert("Dynamic content load failed.");
+				}
+			});
+          }
+
+          function MontantTotalPourPlantationEtat1() {
+            $.ajax({
+				type: "GET",
+				url: 'http://localhost:3000/api/getTotalMontantPercuAvecPlantationEtatEgaleAUn',
+				contentType: "application/json; charset=utf-8",
+				datatype: "json",
+				success: function (data) {
+					$('#sptotal_montant_percu_etat1').html(data[0].Total_Montant_Percu_Avec_Plantation_EtatEgaleA1);
+				},
+				error: function () {
+					alert("Dynamic content load failed.");
+				}
+			});
+          }
+
+          function MontantTotalPourPlantationEtat2() {
+            $.ajax({
+				type: "GET",
+				url: 'http://localhost:3000/api/getTotalMontantPercuAvecPlantationEtatEgaleADeux',
+				contentType: "application/json; charset=utf-8",
+				datatype: "json",
+				success: function (data) {
+					$('#sptotal_montant_percu_etat2').html(data[0].Total_Montant_Percu_Avec_Plantation_EtatEgaleA2);
+				},
+				error: function () {
+					alert("Dynamic content load failed.");
+				}
+			});
+          }
+
+          
+      </script>
+
+    </head>
+    <body>        
+        <div class="container">
+
+            <button class="btn btn-danger btn-block" style="margin-top: 1rem;">Recouvrements Certificat Foncier</button>
+            
+            <table class="table table-dark" style="margin-top: 2rem;">
+                <thead>
+                  <tr>
+                    <th scope="col">Valeur A Calculer</th>
+                    <th scope="col">Resultats</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Total Plantation(s)</th>
+                    <td><span id="sptotal_plantation" style="font-weight: bolder;color: darkblue;"></span></td>
+                    <td>Nombre total de plantations</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Nbre Plantation Ayant Souscrit</th>
+                    <td><span id="sptotal_souscription" style="font-weight: bolder;color: darkblue;"></span></td>
+                    <td>Nombre de plantations ayant un minimun de 1 paiement</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Nbre Plantation Avec Etat=0</th>
+                    <td><span id="sptotal_etat0" style="font-weight: bolder;color: darkblue;"></span></td>
+                    <td>Nombre plantation avec Etat = 0</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Nbre Plantation Avec Etat=1</th>
+                    <td><span id="sptotal_etat1" style="font-weight: bolder;color: darkblue;"></span></td>
+                    <td>Nombre plantation avec Etat = 1</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Nbre Plantation Avec Etat=2</th>
+                    <td><span id="sptotal_etat2" style="font-weight: bolder;color: darkblue;"></span></td>
+                    <td>Nombre plantation avec Etat = 2</td>
+                  </tr>
+                  <tr>
+                    <th></th>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Montant Previsionnel Attendu</th>
+                    <td><span id="sptotal_previsionnel" style="font-weight: bolder;color: darkred;"></span></td>
+                    <td>Montant à percevoir pour toutes les plantations</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Montant Perçu</th>
+                    <td><span id="sptotal_montant_percu" style="font-weight: bolder;color: darkred;"></span></td>
+                    <td>Cumule des montants payé par les planteurs</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Montant Perçu (Plantation Etat=0)</th>
+                    <td><span id="sptotal_montant_percu_etat0" style="font-weight: bolder;color: darkred;"></span></td>
+                    <td>Cumule des montants payé pour les plantations ayant Etat=0</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Montant Perçu (Plantation Etat=1)</th>
+                    <td><span id="sptotal_montant_percu_etat1" style="font-weight: bolder;color: darkred;"></span></td>
+                    <td>Cumule des montants payé pour les plantations ayant Etat=1</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Montant Perçu (Plantation Etat=2)</th>
+                    <td><span id="sptotal_montant_percu_etat2" style="font-weight: bolder;color: darkred;"></span></td>
+                    <td>Cumule des montants payé pour les plantations ayant Etat=2</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Pourcentage de recouvrement</th>
+                    <td><span id="spporcentage_recouvrement" style="font-weight: bolder;color: darkgreen;font-size: larger;"></span></td>
+                    <td>Formule de recouvrement</td>
+                  </tr>
+                </tbody>
+              </table>
+           
+        </div>
+    </body>
+</html>
+

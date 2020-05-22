@@ -1,0 +1,12 @@
+{
+    "getTotalPlantation" : "select count(*) as 'Total_Plantation' from plantation", 
+    "getTotalPlantationAvec1Paiement" : "select count(*) as 'Total_Plantation_Minimum_1_Paiement' from plantation  where MontantDejaPaye <>0",
+    "getTotalPlantationEtatEgaleAZero" : "select count(*) as 'TotalPlantationEtatEgaleA0' from plantation where Etat=0",
+    "getTotalPlantationEtatEgaleAUn" : "select count(*) as 'TotalPlantationEtatEgaleA1' from plantation where Etat=1",
+    "getTotalPlantationEtatEgaleADeux" : "select count(*) as 'TotalPlantationEtatEgaleA2' from plantation where Etat=2",
+    "getTotalMontantPrevisionnel" : "select sum(MontantAPayer) as 'Total_Montant_Previsionnel' from plantation",
+    "getTotalMontantPercu" : "select sum(MontantDejaPaye) as 'Total_Montant_Percu' from plantation where MontantDejaPaye <>0",
+    "getTotalMontantPercuAvecPlantationEtatEgaleAZero" : "select sum(MontantDejaPaye) as 'Total_Montant_Percu_Avec_Plantation_EtatEgaleA0' from plantation where Etat=0",
+    "getTotalMontantPercuAvecPlantationEtatEgaleAUn" : "select sum(MontantDejaPaye) as 'Total_Montant_Percu_Avec_Plantation_EtatEgaleA1' from plantation where Etat=1",
+    "getTotalMontantPercuAvecPlantationEtatEgaleADeux" : "select sum(MontantDejaPaye) as 'Total_Montant_Percu_Avec_Plantation_EtatEgaleA2' from plantation where Etat=2"                        
+}
